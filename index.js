@@ -1,6 +1,6 @@
 import express from 'express' //for creating server and routes
 import dotenv from 'dotenv'  //for environment variables
-import connectdb from './db.js'
+import connectdb from './config/db.js'
 import userRoutes from './routes/users.js'
 
 
@@ -11,6 +11,7 @@ const PORT = process.env.port || 5000
 
 //connecting to the database
 connectdb()
+server.use(express.json()) //for parsing body of requests
 
 server.use('/users', userRoutes)
 
